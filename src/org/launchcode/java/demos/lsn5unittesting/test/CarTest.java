@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.launchcode.java.demos.lsn5unittesting.main.Car;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class CarTest {
 
@@ -36,10 +37,11 @@ public class CarTest {
     }
     //TODO: gasTankLevel is accurate after attempting to drive past tank range
     //TODO: can't have more gas than tank size, expect an exception
-//    @Test(expected = IllegalAccessException.class)
-//    public void testGasOverFillException(){
-//
-//    }
+    @Test(expected = IllegalArgumentException.class)
+    public void testGasOverFillException(){
+        test_car.addGas(10000);
+        fail("Shouldn't get here, car cannot have more gas in tank than the size of it");
+    }
 
 
 }
